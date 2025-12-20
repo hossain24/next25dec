@@ -118,7 +118,7 @@ export default function Header() {
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a href="#" className="text-sm/6 font-semibold text-slate-500 font-serif">
-            Log in <span aria-hidden="true">&rarr;</span>
+            Log in
           </a>
         </div>
       </nav>
