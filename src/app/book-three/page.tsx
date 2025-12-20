@@ -8,6 +8,7 @@ type BookType = {
     title: string;
     author: string;
     genre: string;
+    url: string;
 };
 
 export default function BookThree() {
@@ -24,7 +25,8 @@ export default function BookThree() {
         id: "",
         title: "",
         author: "",
-        genre: ""
+        genre: "",
+        url: ""
       });
 
     useEffect(() => {
@@ -41,7 +43,7 @@ export default function BookThree() {
             <div key={book._id} className="group relative">
               <img
                 alt={book.title}
-                src={"./image/books/book-10.jpg"}
+                src={book.url}
                 className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
               />
               <div className="mt-4 flex justify-between">

@@ -8,6 +8,7 @@ type BookType = {
     title: string;
     author: string;
     genre: string;
+    url: string;
 };
 
 export default function Selective() {
@@ -24,7 +25,8 @@ const [books, setBooks] = useState<BookType[]>([]);
         id: "",
         title: "",
         author: "",
-        genre: ""
+        genre: "",
+        url: ""
       });
 
     useEffect(() => {
@@ -48,7 +50,7 @@ const [books, setBooks] = useState<BookType[]>([]);
               <div className="flex items-center gap-x-6">
                 <img
                   alt=""
-                  src={"./image/books/book-10.jpg"}
+                  src={book.url}
                   className="size-16 rounded-full outline-1 -outline-offset-1 outline-white/10"
                 />
                 <div>
