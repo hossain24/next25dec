@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Pagination } from './module';
 
 type BookType = {
     _id: string;
@@ -14,25 +15,41 @@ type BookType = {
 export default function BookThree() {
 
     const [books, setBooks] = useState<BookType[]>([]);
-    
+    const [currentPage, setCurrentPage] = useState(1);
+    const [booksPerPage] = useState(8);
+
     const fetchData = async () => {
         const response = await axios.get('https://node25mar.onrender.com/books')
         setBooks(response.data);
     }
     console.log(books)
 
-    const [state, setState] = useState({
-        id: "",
-        title: "",
-        author: "",
-        genre: "",
-        url: ""
-      });
-
     useEffect(() => {
         fetchData()
       }, [])
 
+    const indexOfLastBook = currentPage * booksPerPage;
+    const indexOfFirstBook = indexOfLastBook - booksPerPage;
+    const currentBooks = books.slice(indexOfFirstBook, indexOfLastBook );
+
+  return (
+    <>
+      <div>
+        <BookList books={currentBooks} />
+      </div>
+      <div className="bg-gray-900">
+        <Pagination
+          booksPerPage={booksPerPage}
+          totalBooks={books.length}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+        />
+      </div>
+    </>
+    );
+};
+
+function BookList({ books }: { books: BookType[] }) {
   return (
     <div className="bg-gray-900">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
