@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Pagination } from './module';
+import Link from 'next/link';
 
 type BookType = {
     _id: string;
@@ -61,20 +62,18 @@ function BookList({ books }: { books: BookType[] }) {
               <img
                 alt={book.title}
                 src={book.url}
-                className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
+                className="aspect-square w-full rounded-md bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-60"
               />
               <div className="mt-4 flex justify-between">
                 <div>
                   <h3 className="text-sm text-emerald-900">
-                    <a href={"#"}>
-                      <span aria-hidden="true" className="absolute inset-0" />
+                    <Link href={`/book-three/${encodeURIComponent(book._id)}`}>
                       {book.title}
-                    </a>
+                    </Link>
                   </h3>
                 </div>
               </div>
               <p className="text-sm text-gray-500">{book.author}</p>
-              <p className="text-sm text-slate-700">{book.genre}</p>
             </div>
           ))}
         </div>

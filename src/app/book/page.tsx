@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './popup.css';
+import Link from 'next/link';
 
 type BookType = {
     _id: string;
@@ -77,7 +78,9 @@ export default function Book() {
                         <img src="./image/books/book-2.jpg" alt="Book Cover" className="w-full h-full object-fill rounded-2xl"/>
                     </div>
                     <div>
-                        <p className="">{book.title}</p>
+                        <a>
+                          <p className=""><Link href={`/blogs/${encodeURIComponent(book._id)}`}>{book.title}</Link></p>
+                        </a>
                         <p className="">{book.author}</p>
                         <p className="">{book.genre}</p>
                     </div>

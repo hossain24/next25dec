@@ -24,7 +24,7 @@ export const Pagination = ({
 
   return (
     <nav>
-      <ul className="list-style-none flex justify-center space-x-2">
+      <ul className="list-style-none flex justify-center space-x-1 p-2">
         {pageNumbers.map((number) => (
           <li
             key={number}
@@ -33,7 +33,7 @@ export const Pagination = ({
             <a
               onClick={(e) => paginate(number, e)}
               href="!#"
-              className="page-link flex items-center justify-center text-body box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading font-medium rounded-s-base text-sm w-9 h-9 focus:outline-none"
+              className="min-w-9 rounded-md bg-slate-800 py-2 px-3 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-1"
             >
               {number}
             </a>
