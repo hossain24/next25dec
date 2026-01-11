@@ -4,7 +4,7 @@ import React from 'react'
 export default function Footer() {
   return (
     <>
-        <div className="bg-gray-900 py-8">
+        <div className="bg-gray-900 py-8" id='contact'>
          <footer className="bg-white rounded-lg shadow-sm dark:bg-gray-900 m-4">
             <div className="w-full max-w-7xl mx-auto p-4 md:py-8">
                 <div className="sm:flex sm:items-center sm:justify-between">

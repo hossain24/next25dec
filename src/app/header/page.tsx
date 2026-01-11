@@ -21,7 +21,7 @@ import {
   SquaresPlusIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
+import Link from 'next/link'
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -50,18 +50,18 @@ export default function Header() {
           </button>
         </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-12 font-serif">
-           <a href="/book-three" className="text-sm/6 font-normal text-slate-500">
+           <Link href="/#books" scroll={true} className="text-sm/6 font-normal text-slate-500">
             Books
-          </a>
-          <a href="/articles" className="text-sm/6 font-normal text-slate-500">
-            Articles
-          </a>
-          <a href="/news" className="text-sm/6 font-normal text-slate-500">
+          </Link>
+            <Link href="/#articles" scroll={true} className="text-sm/6 font-normal text-slate-500">
+               Articles
+            </Link>
+          <Link href="/#news" scroll={true} className="text-sm/6 font-normal text-slate-500">
             News
-          </a>
-          <a href="/contact" className="text-sm/6 font-normal text-slate-500">
+          </Link>
+          <Link href="/#contact" className="text-sm/6 font-normal text-slate-500">
             Contact
-          </a>
+          </Link>
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a href="#" className="text-sm/6 font-normal text-slate-500 font-serif">

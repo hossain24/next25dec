@@ -1,12 +1,13 @@
 "use client"
 
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { useParams, useRouter } from 'next/navigation';
 import axios from 'axios';
 
 export default function page() {
 
-  const [book, setBook] = useState<{title: string; author: string; genre: string; url: string }>({
+  const [book, setBook] = useState<{_id: string; title: string; author: string; genre: string; url: string }>({
+    _id: "",
     title: "",
     author: "",
     genre: "",
@@ -14,7 +15,7 @@ export default function page() {
   });
 
   const params = useParams()
-  const { _id } = params
+  const { _id } = params;
   const [books, setBooks] = useState([]);
   const router = useRouter();
 
