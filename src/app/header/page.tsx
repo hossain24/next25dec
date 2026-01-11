@@ -94,25 +94,25 @@ export default function Header() {
             <div className="-my-6 divide-y divide-white/10 font-serif">
               <div className="space-y-2 py-6">
                 <a
-                  href="/book-three"
+                  href="/#book-three"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-normal text-slate-500 hover:bg-white/5"
                 >
                   Books
                 </a>
                 <a
-                  href="/articles"
+                  href="/#articles"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-normal text-slate-500 hover:bg-white/5"
                 >
                   Articles
                 </a>
                 <a
-                  href="/news"
+                  href="/#news"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-normal text-slate-500 hover:bg-white/5"
                 >
                   News
                 </a>
                 <a
-                  href="/contact"
+                  href="/#contact"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-normal text-slate-500 hover:bg-white/5"
                 >
                   Contact
