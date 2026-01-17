@@ -49,7 +49,7 @@ export default function Page() {
                       <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-teal-900 sm:text-5xl">
                         {article.title}
                       </p>
-                      <p className="mt-6 text-lg/8 text-teal-900">
+                      <p className="mt-6 text-lg/8 text-teal-900 text-justify">
                         {article.post}
                       </p>
             </div>

@@ -13,7 +13,7 @@ type BookType = {
     url: string;
 };
 
-export default function BookThree() {
+export default function Books() {
 
     const [books, setBooks] = useState<BookType[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -66,7 +66,7 @@ function BookList({ books }: { books: BookType[] }) {
               <div className="mt-4 flex justify-between">
                 <div>
                   <h3 className="text-sm text-emerald-900">
-                    <Link href={`/book-three/${encodeURIComponent(book._id)}`}>
+                    <Link href={`/books/${encodeURIComponent(book._id)}`}>
                       {book.title}
                     </Link>
                   </h3>

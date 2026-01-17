@@ -16,7 +16,7 @@ export default function Selective() {
 const [books, setBooks] = useState<BookType[]>([]);
     
     const fetchData = async () => {
-        const response = await axios.get('http://localhost:5000/books?limit=6')
+        const response = await axios.get('https://node25mar.onrender.com/books?limit=6')
         setBooks(response.data);
     }
     console.log(books)

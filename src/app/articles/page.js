@@ -44,7 +44,7 @@ export default function Articles() {
                       {article.title}
                     </Link>
                   </h3>
-                  <p className="mt-5 line-clamp-3 text-sm/6 text-slate-700">{article.post}</p>
+                  <p className="mt-5 line-clamp-3 text-sm/6 text-slate-700 text-justify">{article.post}</p>
                 </div>
               </article>
             ))}
