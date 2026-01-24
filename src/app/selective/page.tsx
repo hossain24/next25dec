@@ -34,7 +34,7 @@ const [books, setBooks] = useState<BookType[]>([]);
       }, [])
 
   return (
-    <div className="bg-gray-900 py-24 sm:py-32" id='news'>
+    <div className="bg-gray-900 py-24 sm:py-32" id='top-books'>
       <div className="mx-auto grid max-w-7xl gap-20 px-6 lg:px-8 xl:grid-cols-3">
         <div className="max-w-xl">
           <h2 className="text-2xl font-normal tracking-tight text-pretty text-slate-500 sm:text-4xl font-serif text-center">

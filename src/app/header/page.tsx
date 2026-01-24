@@ -56,17 +56,17 @@ export default function Header() {
             <Link href="/#articles" scroll={true} className="text-sm/6 font-normal text-slate-500">
                Articles
             </Link>
-          <Link href="/#news" scroll={true} className="text-sm/6 font-normal text-slate-500">
-            News
+          <Link href="/#top-books" scroll={true} className="text-sm/6 font-normal text-slate-500">
+            Top Books
           </Link>
           <Link href="/#contact" className="text-sm/6 font-normal text-slate-500">
             Contact
           </Link>
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm/6 font-normal text-slate-500 font-serif">
+          <Link href="/login" className="text-sm/6 font-normal text-slate-500">
             Log in
-          </a>
+          </Link>
         </div>
       </nav>
       <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
@@ -94,7 +94,7 @@ export default function Header() {
             <div className="-my-6 divide-y divide-white/10 font-serif">
               <div className="space-y-2 py-6">
                 <Link
-                  href="/#book-three"
+                  href="/#books"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-normal text-slate-500 hover:bg-white/5"
                 >
                   Books
@@ -106,10 +106,10 @@ export default function Header() {
                   Articles
                 </Link>
                 <Link
-                  href="/#news"
+                  href="/#top-books"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-normal text-slate-500 hover:bg-white/5"
                 >
-                  News
+                  Top Books
                 </Link>
                 <Link
                   href="/#contact"
@@ -120,7 +120,7 @@ export default function Header() {
               </div>
               <div className="py-6">
                 <Link
-                  href="#"
+                  href="/login"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-normal text-slate-500 hover:bg-white/5"
                 >
                   Log in

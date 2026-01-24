@@ -45,6 +45,9 @@ export default function page() {
       router.push('/');
     }
 
+    const readBook = () => {
+      router.push('/checkout');
+    }
   return (
   <>
         <div className="bg-gray-900">
@@ -63,6 +66,10 @@ export default function page() {
                         Genre: {book.genre}
                       </p>
             </div>
+            <button onClick={readBook} className="bg-slate-700 text-teal-700 px-4 py-2 rounded-md hover:bg-gray-700 my-4">
+              <span>Read Book</span>
+            </button>
+            <br/>
             <button onClick={goBack} className="bg-slate-700 text-teal-700 px-4 py-2 rounded-md hover:bg-gray-700 my-4">
               <span>Go Back</span>
             </button>
