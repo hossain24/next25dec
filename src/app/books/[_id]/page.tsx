@@ -4,7 +4,14 @@ import  { useState, useEffect } from "react";
 import { useParams, useRouter } from 'next/navigation';
 import axios from 'axios';
 
-export default function page() {
+export default function page({ searchParams }: { searchParams: { canceled?: boolean } }) {
+  const { canceled } = searchParams
+
+  if (canceled) {
+    console.log(
+      'Order canceled -- continue to shop around and checkout when you’re ready.'
+    )
+  }
 
   const [book, setBook] = useState<{_id: string; title: string; author: string; genre: string; url: string }>({
     _id: "",
@@ -48,6 +55,7 @@ export default function page() {
     const readBook = () => {
       router.push('/checkout');
     }
+
   return (
   <>
         <div className="bg-gray-900">
@@ -66,9 +74,11 @@ export default function page() {
                         Genre: {book.genre}
                       </p>
             </div>
-            <button onClick={readBook} className="bg-slate-700 text-teal-700 px-4 py-2 rounded-md hover:bg-gray-700 my-4">
-              <span>Read Book</span>
-            </button>
+            <form action="/api/checkout_sessions" method="POST">
+              <button type="submit" className="bg-slate-700 text-teal-700 px-4 py-2 rounded-md hover:bg-gray-700 my-4">
+                <span>Read Book</span>
+              </button>
+            </form>
             <br/>
             <button onClick={goBack} className="bg-slate-700 text-teal-700 px-4 py-2 rounded-md hover:bg-gray-700 my-4">
               <span>Go Back</span>

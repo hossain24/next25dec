@@ -18,13 +18,28 @@ export async function POST() {
         },
       ],
       mode: 'payment',
-      success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`
     });
-    return NextResponse.redirect(session.url, 303)
+    if (session.url) {
+      return NextResponse.redirect(session.url, 303)
+    } else {
+      return NextResponse.json(
+        { error: 'Session URL is null' },
+        { status: 500 }
+      )
+    }
   } catch (err) {
+    let message = 'An unknown error occurred';
+    let statusCode = 500;
+    if (err && typeof err === 'object' && 'message' in err) {
+      message = (err as { message: string }).message;
+    }
+    if (err && typeof err === 'object' && 'statusCode' in err) {
+      statusCode = (err as { statusCode: number }).statusCode || 500;
+    }
     return NextResponse.json(
-      { error: err.message },
-      { status: err.statusCode || 500 }
+      { error: message },
+      { status: statusCode }
     )
   }
 }

@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@asteasolutions/epub-reader": "^1.0.0",
     "@headlessui/react": "^2.2.9",
     "@heroicons/react": "^2.2.0",
     "@stripe/stripe-js": "^8.6.4",
@@ -18,6 +19,7 @@
     "postcss": "^8.5.6",
     "react": "19.2.1",
     "react-dom": "19.2.1",
+    "react-reader": "^2.0.15",
     "react-router-hash-link": "^2.4.3",
     "react-scroll": "^1.9.3",
     "stripe": "^20.2.0"

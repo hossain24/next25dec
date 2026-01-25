@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
 
 import { stripe } from '../../lib/stripe'
-import ReadBook from '../read-book/page'
+import EPub from '../epub/page'
 
 export default async function Success({ searchParams }: { searchParams: { session_id?: string } }) {
   const { session_id } = await searchParams
@@ -21,7 +21,7 @@ export default async function Success({ searchParams }: { searchParams: { sessio
 
   if (status === 'complete') {
     return (
-      <ReadBook />
+      <EPub />
     )
   }
 }
