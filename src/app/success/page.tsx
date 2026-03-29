@@ -1,6 +1,5 @@
 import { redirect } from 'next/navigation'
 
-import { stripe } from '../../lib/stripe'
 import EPub from '../epub/page'
 
 export default async function Success({ searchParams }: { searchParams: { session_id?: string } }) {
