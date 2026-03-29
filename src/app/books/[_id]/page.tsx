@@ -4,21 +4,16 @@ import  { useState, useEffect } from "react";
 import { useParams, useRouter } from 'next/navigation';
 import axios from 'axios';
 
-export default function page({ searchParams }: { searchParams: { canceled?: boolean } }) {
-  const { canceled } = searchParams
+export default function page() {
 
-  if (canceled) {
-    console.log(
-      'Order canceled -- continue to shop around and checkout when you’re ready.'
-    )
-  }
-
-  const [book, setBook] = useState<{_id: string; title: string; author: string; genre: string; url: string }>({
+  const [book, setBook] = useState<{_id: string; id: number; title: string; author: string; genre: string; url: string; price: number }>({
     _id: "",
+    id: 0,
     title: "",
     author: "",
     genre: "",
-    url: ""
+    url: "",
+    price: 0
   });
 
   const params = useParams()
@@ -48,12 +43,22 @@ export default function page({ searchParams }: { searchParams: { canceled?: bool
     })
     }, [_id]);
 
-    const goBack = () => {
-      router.push('/');
+    const createCheckoutSession = () => {
+      axios.post(`http://localhost:5000/checkout`, {
+       books: [
+        { id: book.id, quantity: 1 }
+      ]
+    })
+        .then(({ data }) => {
+          window.location = data.url
+        })
+      .catch(function (error) {
+        console.log(error);
+      });
     }
 
-    const readBook = () => {
-      router.push('/checkout');
+    const goBack = () => {
+      router.push('/');
     }
 
   return (
@@ -73,12 +78,13 @@ export default function page({ searchParams }: { searchParams: { canceled?: bool
                       <p className="mt-4 text-lg/8 text-slate-700">
                         Genre: {book.genre}
                       </p>
+                      <p className="mt-4 text-lg/8 text-slate-700">
+                        Price: € {book.price}
+                      </p>
             </div>
-            <form action="/api/checkout_sessions" method="POST">
-              <button type="submit" className="bg-slate-700 text-teal-700 px-4 py-2 rounded-md hover:bg-gray-700 my-4">
-                <span>Read Book</span>
-              </button>
-            </form>
+            <button onClick={createCheckoutSession} className="bg-slate-700 text-teal-700 px-4 py-2 rounded-md hover:bg-gray-700 my-4">
+              <span>Read Book</span>
+            </button>
             <br/>
             <button onClick={goBack} className="bg-slate-700 text-teal-700 px-4 py-2 rounded-md hover:bg-gray-700 my-4">
               <span>Go Back</span>

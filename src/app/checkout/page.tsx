@@ -1,19 +1,29 @@
-export default async function IndexPage({ searchParams }: { searchParams: { canceled?: boolean } }) {
-  const { canceled } = searchParams
+'use client'
 
-  if (canceled) {
-    console.log(
-      'Order canceled -- continue to shop around and checkout when you’re ready.'
-    )
-  }
+import axios from "axios"
+
+export default async function IndexPage() {
+
+  const createCheckoutSession = () => {
+   axios.post('http://localhost:5000/create-checkout-session', {
+   items: [
+        { id: 1, quantity: 3 },
+        { id: 2, quantity: 2 }
+      ],
+  })
+    .then(({ data }) => {
+      window.location = data.url
+    })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
 
   return (
-    <form action="/api/checkout_sessions" method="POST">
       <section>
-        <button type="submit" role="link">
+        <button type="submit" onClick={createCheckoutSession}>
           Checkout
         </button>
       </section>
-    </form>
   )
 }
