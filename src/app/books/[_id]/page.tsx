@@ -44,7 +44,7 @@ export default function page() {
     }, [_id]);
 
     const createCheckoutSession = () => {
-      axios.post(`http://localhost:5000/checkout`, {
+      axios.post(`https://node25mar.onrender.com/checkout`, {
        books: [
         { id: book.id, quantity: 1 }
       ]
