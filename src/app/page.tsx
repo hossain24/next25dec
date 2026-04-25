@@ -1,3 +1,5 @@
+"use client";
+
 import Header from "./header/page";
 import Home from "./home/page";
 import Landing from "./landing/page";
@@ -8,6 +10,7 @@ import ScrollToTopBtn from "./scroll/page";
 import Books from "./books/page";
 
 export default function page() {
+
   return (
     <>
       <ScrollToTopBtn />

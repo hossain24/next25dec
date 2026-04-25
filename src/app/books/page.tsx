@@ -7,6 +7,7 @@ import Link from 'next/link';
 
 type BookType = {
     _id: string;
+    id: number;
     title: string;
     author: string;
     genre: string;

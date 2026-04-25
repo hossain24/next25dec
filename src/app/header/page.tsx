@@ -59,13 +59,13 @@ export default function Header() {
           <Link href="/#top-books" scroll={true} className="text-sm/6 font-normal text-slate-500">
             Top Books
           </Link>
-          <Link href="/#contact" className="text-sm/6 font-normal text-slate-500">
+          <Link href="/#contact" scroll={true} className="text-sm/6 font-normal text-slate-500">
             Contact
           </Link>
         </PopoverGroup>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link href="/login" className="text-sm/6 font-normal text-slate-500">
-            Log in
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end font-serif">
+          <Link href="/cart" className="text-sm/6 font-normal text-slate-500">
+            Order Books
           </Link>
         </div>
       </nav>
@@ -120,10 +120,10 @@ export default function Header() {
               </div>
               <div className="py-6">
                 <Link
-                  href="/login"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-normal text-slate-500 hover:bg-white/5"
+                  href="/cart"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-normal text-slate-500 hover:bg-white/5"
                 >
-                  Log in
+                  Order Books
                 </Link>
               </div>
             </div>

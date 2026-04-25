@@ -6,12 +6,14 @@ import axios from 'axios';
 
 export default function page() {
 
-  const [book, setBook] = useState<{_id: string; title: string; author: string; genre: string; url: string }>({
+  const [book, setBook] = useState<{_id: string; id: number, title: string; author: string; genre: string; url: string; price: number }>({
     _id: "",
+    id: 0,
     title: "",
     author: "",
     genre: "",
-    url: ""
+    url: "",
+    price: 0
   });
 
   const params = useParams()
@@ -41,6 +43,19 @@ export default function page() {
     })
     }, [_id]);
 
+    const createCheckoutSession = () => {
+      axios.post(`https://node25mar.onrender.com/checkout`, {
+       books: [
+        { id: book.id, quantity: 1 }
+      ]
+    })
+        .then(({ data }) => {
+          window.location = data.url
+        })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
 
     const goBack = () => {
       router.push('/');
@@ -63,7 +78,14 @@ export default function page() {
                       <p className="mt-4 text-lg/8 text-slate-700">
                         Genre: {book.genre}
                       </p>
+                      <p className="mt-4 text-lg/8 text-slate-700">
+                        Price: ${book.price.toFixed(2)}
+                      </p>
             </div>
+            <button onClick={createCheckoutSession} className="bg-slate-700 text-teal-700 px-4 py-2 rounded-md hover:bg-gray-700 my-4">
+              <span>Read Book</span>
+            </button>
+            <br />
             <button onClick={goBack} className="bg-slate-700 text-teal-700 px-4 py-2 rounded-md hover:bg-gray-700 my-4">
               <span>Go Back</span>
             </button>
