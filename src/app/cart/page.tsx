@@ -38,10 +38,8 @@ export default function Cart() {
     const indexOfFirstBook = indexOfLastBook - booksPerPage;
     const currentBooks = books.slice(indexOfFirstBook, indexOfLastBook );
 
-    const cartItemsFromLocalStorage =
-      JSON.parse(localStorage.getItem("cartItems") || "[]");
-
-    const [cartItems, setCartItems] = useState(cartItemsFromLocalStorage);
+    const [cartItems, setCartItems] = useState<BookType[]>([]);
+    const [isCartLoaded, setIsCartLoaded] = useState(false);
 
     const [book, setBook] = useState<{_id: string; id: number; title: string; author: string; genre: string; url: string; price: number; quantity: number }>({
     _id: "",
@@ -55,8 +53,16 @@ export default function Cart() {
   });
 
     useEffect(() => {
-      localStorage.setItem("cartItems", JSON.stringify(cartItems));
-    }, [cartItems]);
+      const storedCartItems = localStorage.getItem("cartItems");
+      setCartItems(storedCartItems ? JSON.parse(storedCartItems) : []);
+      setIsCartLoaded(true);
+    }, []);
+
+    useEffect(() => {
+      if (isCartLoaded) {
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      }
+    }, [cartItems, isCartLoaded]);
 
     const handleAddToCart = (book: BookType) => {
 
@@ -92,6 +98,10 @@ export default function Cart() {
     // Decrease item quantity function
     const handleDecrease = (book: BookType) => {
       const selectedItem = cartItems.find((item: BookType) => item.id === book.id);
+      if (!selectedItem) {
+        return;
+      }
+
       if (selectedItem.quantity === 1) {
         setCartItems(
           cartItems.filter((oneItem: BookType) => oneItem._id !== selectedItem._id)
