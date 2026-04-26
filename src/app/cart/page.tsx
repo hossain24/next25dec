@@ -37,22 +37,31 @@ export default function Cart() {
     const indexOfLastBook = currentPage * booksPerPage;
     const indexOfFirstBook = indexOfLastBook - booksPerPage;
     const currentBooks = books.slice(indexOfFirstBook, indexOfLastBook );
+    
+    /* const [cartItems, setCartItems] = useState(cartItemsFromLocalStorage); */
 
-    const cartItemsFromLocalStorage =
-      JSON.parse(localStorage.getItem("cartItems") || "[]");
+    /* const cartItemsFromLocalStorage =
+      JSON.parse(localStorage.getItem("cartItems") || "[]"); */
 
-    const [cartItems, setCartItems] = useState(cartItemsFromLocalStorage);
+    const [cartItems, setCartItems] = useState<BookType[]>([]);
 
+    useEffect(() => {
+      const cartItemsFromLocalStorage: BookType[] = JSON.parse(
+        localStorage.getItem("cartItems") || "[]"
+      );
+      setCartItems(cartItemsFromLocalStorage);
+    }, []);
+    
     const [book, setBook] = useState<{_id: string; id: number; title: string; author: string; genre: string; url: string; price: number; quantity: number }>({
-    _id: "",
-    id: 0,
-    title: "",
-    author: "",
-    genre: "",
-    url: "",
-    price: 0,
-    quantity: 0
-  });
+      _id: "",
+      id: 0,
+      title: "",
+      author: "",
+      genre: "",
+      url: "",
+      price: 0,
+      quantity: 0
+    });
 
     useEffect(() => {
       localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -92,11 +101,11 @@ export default function Cart() {
     // Decrease item quantity function
     const handleDecrease = (book: BookType) => {
       const selectedItem = cartItems.find((item: BookType) => item.id === book.id);
-      if (selectedItem.quantity === 1) {
+      if (selectedItem && selectedItem.quantity === 1) {
         setCartItems(
           cartItems.filter((oneItem: BookType) => oneItem._id !== selectedItem._id)
         );
-      } else {
+      } else if (selectedItem) {
         setCartItems(
           cartItems.map((singleItem: BookType) =>
             singleItem.id === book.id
@@ -160,16 +169,7 @@ export default function Cart() {
     <>
       <div className="bg-gray-900 bg-cover">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">
-          <div className="flex items-center justify-between">
-          <Link href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Wisdom</span>
-            <img
-              alt=""
-              src="./image/logo/logo.svg"
-              className="h-8 w-auto"
-            />
-          </Link>
-          </div>
+          <h2 className="text-2xl font-light tracking-tight text-white" id="books"></h2>
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {books.map((book) => (
               <div key={book._id} className="group relative">
