@@ -1,9 +1,7 @@
 'use client'
 
-import React from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 
 export default function ReadBook() {
     const router = useRouter()
@@ -22,11 +20,15 @@ export default function ReadBook() {
   return (
     <>
       <div className="flex items-center justify-center min-h-screen bg-gray-900">
+        <div className="text-center">
         <h1 className="text-4xl font-bold text-white">Welcome to the Read Book Page</h1>
-        <br/>
-        <button onClick={handleSignout} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-           Sign Out
+        <button
+          onClick={handleSignout}
+          className="px-4 py-2 mt-4 text-sm font-medium text-white bg-teal-700 rounded hover:bg-slate-700"
+        >
+          Sign Out
         </button>
+      </div>
       </div>
     </>
   )
